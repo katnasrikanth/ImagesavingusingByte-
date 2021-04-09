@@ -1,4 +1,5 @@
 # ImagesavingusingByte-
+//Storing base64 String as Image in database
 
 package models;
 
@@ -59,6 +60,11 @@ public class Image extends Model {
             image.setImage(rawImage.getBytes());
             Image.finder.db().save(image);
             return ok(Json.toJson(image.getId()));
+        }
+        
+          public Result getImage(){
+            List<Image> images = Image.finder.all();
+            return ok(Json.toJson(images));
         }
         
         //Json param using Postman
